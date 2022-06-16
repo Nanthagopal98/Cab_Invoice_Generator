@@ -12,7 +12,7 @@ namespace CabInvoiceGenerator
         private int MINIMUM_FARE = 5;
         private int COST_PER_TIME = 1;
         double totalFare = 0;
-        public void CalculateFare(double distance, double time)
+        public double CalculateFare(double distance, double time)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace CabInvoiceGenerator
                 {
                     throw new CustomExceptions(CustomExceptions.ExceptionTypes.INVALID_INPUT, "Check Below Field");
                 }
-                Console.WriteLine("Total Fare For The Journey : " + totalFare);
+                Console.WriteLine("Total Fare For The Journey : " + totalFare);               
             }
             catch(CustomExceptions)
             {
@@ -34,6 +34,7 @@ namespace CabInvoiceGenerator
                     throw new CustomExceptions(CustomExceptions.ExceptionTypes.INVALID_TIME, "Check Entered Time");
                 }
             }
+            return totalFare;
         }
     }
 }
