@@ -1,4 +1,11 @@
-﻿using CabInvoiceGenerator;
+﻿using System;
+namespace CabInvoiceGenerator
+{
+    public class program
+    {
+        public static void Main(string[] args)
+        {
 
-InvoiceGenerator invoice = new InvoiceGenerator();
-invoice.CalculateFare(-5, 10);
+        }
+    }
+}

@@ -10,7 +10,7 @@ namespace CabInvoiceGenerator
     {
         public enum ExceptionTypes
         {
-            INVALID_DISTANCE,INVALID_TIME,INVALID_INPUT
+            INVALID_DISTANCE,INVALID_TIME,INVALID_INPUT, NULL_RIDE
         }
         public ExceptionTypes type;
         public CustomExceptions(ExceptionTypes type, string message) : base(message)
