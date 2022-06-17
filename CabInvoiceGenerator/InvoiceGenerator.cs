@@ -11,10 +11,9 @@ namespace CabInvoiceGenerator
         private int MINIMUM_COST_PER_KM = 10;
         private int MINIMUM_FARE = 5;
         private int COST_PER_TIME = 1;
-        double singleFare = 0;
-        double totalFare = 0;
         public double CalculateFare(Ride ride)
         {
+            double singleFare = 0;
             try
             {
                 singleFare = MINIMUM_COST_PER_KM * ride.distance + COST_PER_TIME * ride.time;
@@ -37,8 +36,9 @@ namespace CabInvoiceGenerator
             }
             return singleFare;
         }
-        public double InvoiceSummary(Ride[] rides)
+        public EnhancedInvoice InvoiceSummary(Ride[] rides)
         {
+            double totalFare = 0;
             try
             {
                 foreach (Ride ride in rides)
@@ -54,7 +54,7 @@ namespace CabInvoiceGenerator
                 }
             }
             Console.WriteLine("Total Fare For The Journey : " + totalFare);
-            return totalFare;
+            return new EnhancedInvoice (rides.Length, totalFare);
         }
     }
 }
