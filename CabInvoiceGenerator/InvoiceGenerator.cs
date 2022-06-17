@@ -8,6 +8,7 @@ namespace CabInvoiceGenerator
 {
     public class InvoiceGenerator
     {
+        RideRepository rideRepository = new RideRepository();
         private int MINIMUM_COST_PER_KM = 10;
         private int MINIMUM_FARE = 5;
         private int COST_PER_TIME = 1;
@@ -21,7 +22,6 @@ namespace CabInvoiceGenerator
                 {
                     throw new CustomExceptions(CustomExceptions.ExceptionTypes.INVALID_INPUT, "Check Below Field");
                 }
-                Console.WriteLine("Curren Ride Fare : " + singleFare);
             }
             catch (CustomExceptions)
             {
@@ -53,8 +53,16 @@ namespace CabInvoiceGenerator
                     throw new CustomExceptions(CustomExceptions.ExceptionTypes.NULL_RIDE, "Rides Are Null");
                 }
             }
-            Console.WriteLine("Total Fare For The Journey : " + totalFare);
             return new EnhancedInvoice (rides.Length, totalFare);
+        }
+        public void AddRide(string userId, Ride[] rides)
+        {
+            rideRepository.AddRides(userId, rides);
+        }
+        public void GetInvoice(String userId)
+        {
+            Console.WriteLine("UserId :"+userId);
+            InvoiceSummary(rideRepository.GetRides(userId));
         }
     }
 }
